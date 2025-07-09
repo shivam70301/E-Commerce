@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .forms import SignUpForm
 from django import forms
 # Create your views here.
 
@@ -24,7 +25,7 @@ def login_user(request):
 
         if user is not None :
             login(request,user)
-            messages.success(request, "🚀 You’re in! Let’s turn your wishlist into reality.")
+            messages.success(request, "  You’re in! Let’s turn your wishlist into reality.🚀 ")
             return redirect('home') 
         else:
             messages.success(request, "🕵️Error mystery in progress. Retry while we investigate!")
@@ -39,7 +40,23 @@ def logout_user(request):
         
 #User Registration
 def register_user(request):
-    messages.success(request,"✨ You’re one step away from something amazing. Let’s get you started!")
-    return render(request, 'register.html')
+    form = SignUpForm()
+    if request.method =='POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password2']
+            #Authenticate
+            user = authenticate(username=username, password=password)
+            login(request,user)
+            messages.success(request, "🌟 Account created. Adventures in shopping await you!")
+            return redirect('home')
+        else:
+             messages.success(request,"Something wrong!!!")
+             return redirect('home')
+        
+    else:
+         return render(request, 'register.html', {'form':form})
 
-#🌟 Account created. Adventures in shopping await you!
+#
