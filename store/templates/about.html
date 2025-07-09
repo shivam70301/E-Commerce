@@ -1,5 +1,55 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-hii
+        <!-- Header-->
+        <header class="bg-dark py-2">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">About Daizy</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Every product is unique</p>
+                </div>
+            </div>
+        </header>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                
+                <p class="lead">
+                    Welcome to our E-commerce Store! We are passionate about delivering high-quality products to our customers.
+                    Our mission is to provide a seamless shopping experience with a wide range of products at competitive prices.
+                </p>
+                <p align="justify">
+                    Founded in 2023, Daizy was born from a passion for connecting customers with products that spark joy. From humble beginnings, we’ve grown into a trusted online store, offering a diverse range of categories, from fashion to electronics, all curated with care.
+                    Our dedication to quality, sustainability, and customer happiness drives everything we do. Join us in celebrating life’s moments with Daizy’s unique collections.
+
+                </p>
+                <p>
+                    Our dedication to quality, sustainability, and customer happiness drives everything we do. Join us in celebrating life’s moments with Daizy’s unique collections.
+                </p>
+            </div>
+        </div>
+    </div> 
+
+ <!-- Mission and Vision Section -->
+    <div class="container my-5">             
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6">
+            <h2 class="h3 fw-bold">Our Mission</h2>
+            <p>
+                To empower our customers with a seamless and joyful shopping journey, delivering premium products at competitive prices with unparalleled service.
+            </p>
+            <h2 class="h3 fw-bold mt-4">Our Vision</h2>
+            <p>
+                To become the leading e-commerce destination, known for quality, innovation, and a commitment to customer satisfaction worldwide.
+            </p>
+            <a href="{% url 'home' %}" class="btn btn-success mt-3">Shop Now</a>
+        </div>
+        <div class="col-lg-6">
+            <img src="{% static 'assets/favicon.ico' %}" class="img-fluid rounded shadow" alt="Daizy Mission" style="max-height: 400px; object-fit: cover;">
+        </div>
+
+    </div>
+    </div> 
+    
 {% endblock %}
